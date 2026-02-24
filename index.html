@@ -1,50 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WATCHNEXT</title>
 
 <style>
-:root{
-  --red:#e50914;
-  --bg:#141414;
-  --card:#1f1f1f;
-}
+:root{--red:#e50914;--bg:#141414}
 *{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#fff;font-family:Arial}
 
-body{
-  margin:0;
-  background:var(--bg);
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-}
-
-/* NAV */
 .nav{
   padding:18px 32px;
-  position:sticky;
-  top:0;
-  z-index:10;
   background:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(20,20,20,.8));
+  position:sticky;top:0;z-index:10
 }
-.logo{
-  font-size:30px;
-  font-weight:900;
-  color:var(--red);
-  letter-spacing:3px;
-  transform:rotate(-2deg);
-}
+.logo{color:var(--red);font-size:30px;font-weight:900;letter-spacing:3px;transform:rotate(-2deg)}
 
-/* GRID */
 .grid{
   padding:30px;
   display:grid;
   gap:20px;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr))
 }
 
-/* CARD */
 .card{
   position:relative;
   border-radius:18px;
@@ -52,176 +31,74 @@ body{
   cursor:pointer;
   background-size:cover;
   background-position:center;
-  transition:.35s;
+  transition:.35s
 }
-.card:hover{
-  transform:scale(1.07);
-  box-shadow:0 30px 60px rgba(0,0,0,.8);
-}
-.card::before{
-  content:"";
-  display:block;
-  padding-top:56.25%;
-}
-@media(max-width:768px){
-  .card::before{padding-top:177%;}
-}
+.card:hover{transform:scale(1.07);box-shadow:0 30px 60px rgba(0,0,0,.8)}
+.card::before{content:"";display:block;padding-top:56.25%}
+@media(max-width:768px){.card::before{padding-top:177%}}
+
 .title{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  padding:16px;
-  font-weight:bold;
-  background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
+  position:absolute;bottom:0;width:100%;
+  padding:16px;font-weight:bold;
+  background:linear-gradient(to top,rgba(0,0,0,.85),transparent)
 }
 
 /* MODAL */
 .modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.8);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:20;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;align-items:center;justify-content:center;z-index:20
 }
 .modal-box{
   background:#181818;
-  width:92%;
-  max-width:720px;
-  border-radius:18px;
-  padding:22px;
-  animation:pop .3s ease;
+  width:92%;max-width:760px;
+  border-radius:18px;padding:22px;
 }
-@keyframes pop{
-  from{opacity:0;transform:scale(.85)}
-  to{opacity:1;transform:scale(1)}
-}
-.close{
-  position:absolute;
-  right:22px;
-  top:18px;
-  font-size:26px;
-  cursor:pointer;
-}
+.close{position:absolute;right:22px;top:18px;font-size:26px;cursor:pointer}
 
-/* MODAL CONTENT */
-.modal-header{
-  display:flex;
-  gap:16px;
-}
-.modal-poster{
-  width:130px;
-  border-radius:12px;
-}
+.modal-header{display:flex;gap:16px}
+.modal-poster{width:130px;border-radius:12px}
 .modal-info h2{margin:0}
-.modal-info p{
-  color:#b3b3b3;
-  font-size:14px;
-}
+.modal-info p{color:#b3b3b3;font-size:14px}
 
-/* TRAILER (SMALL) */
 .trailer{
-  margin-top:14px;
-  max-width:320px;
-  position:relative;
-  cursor:pointer;
+  margin-top:12px;max-width:300px;cursor:pointer;position:relative
 }
-.trailer img{
-  width:100%;
-  border-radius:10px;
-}
+.trailer img{width:100%;border-radius:10px}
 .yt{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:42px;
-  color:#ff0000;
-  background:rgba(0,0,0,.25);
-  border-radius:10px;
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;color:#ff0000;background:rgba(0,0,0,.25)
 }
-.trailer-text{
-  margin-top:6px;
-  font-size:13px;
-  color:#b3b3b3;
-}
+.trailer-text{font-size:13px;color:#b3b3b3;margin-top:6px}
 
-/* EPISODES */
-.episodes{
-  margin-top:14px;
-  font-size:14px;
-  color:#b3b3b3;
-  line-height:1.7;
-}
+.episodes{margin-top:14px;font-size:14px;color:#b3b3b3;line-height:1.7}
 </style>
 </head>
 
 <body>
 
-<div class="nav">
-  <div class="logo">WATCHNEXT</div>
-</div>
+<div class="nav"><div class="logo">WATCHNEXT</div></div>
 
 <div class="grid">
 
-<!-- O ROMEO -->
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/7/7f/O_Romeo_film_poster.jpg')"
-onclick="openModal(
-'O Romeo',
-'https://upload.wikimedia.org/wikipedia/en/7/7f/O_Romeo_film_poster.jpg',
-'https://i.ytimg.com/vi/6Z6x7yX5zZ0/hqdefault.jpg',
-'https://www.youtube.com/results?search_query=o+romeo+official+trailer',
-'25 Feb 2026 (Theatre)'
-)">
-<div class="title">O Romeo</div>
-</div>
+<!-- MOVIES -->
+<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/7/7f/O_Romeo_film_poster.jpg')" onclick="openM('O Romeo','https://upload.wikimedia.org/wikipedia/en/7/7f/O_Romeo_film_poster.jpg','6Z6x7yX5zZ0','25 Feb 2026 (Theatre)')"><div class="title">O Romeo</div></div>
 
-<!-- DRISHYAM 2 -->
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/9/9e/Drishyam_2_2022_film_poster.jpg')"
-onclick="openModal(
-'Drishyam 2',
-'https://upload.wikimedia.org/wikipedia/en/9/9e/Drishyam_2_2022_film_poster.jpg',
-'https://i.ytimg.com/vi/c9M7Y5sZrA4/hqdefault.jpg',
-'https://www.youtube.com/watch?v=c9M7Y5sZrA4',
-'26 Feb 2026'
-)">
-<div class="title">Drishyam 2</div>
-</div>
+<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/9/9e/Drishyam_2_2022_film_poster.jpg')" onclick="openM('Drishyam 2','https://upload.wikimedia.org/wikipedia/en/9/9e/Drishyam_2_2022_film_poster.jpg','c9M7Y5sZrA4','26 Feb 2026')"><div class="title">Drishyam 2</div></div>
 
-<!-- YOUR NAME -->
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png')"
-onclick="openModal(
-'Your Name',
-'https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png',
-'https://i.ytimg.com/vi/xU47nhruN-Q/hqdefault.jpg',
-'https://www.youtube.com/watch?v=xU47nhruN-Q',
-'27 Feb 2026'
-)">
-<div class="title">Your Name</div>
-</div>
+<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png')" onclick="openM('Your Name','https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png','xU47nhruN-Q','27 Feb 2026')"><div class="title">Your Name</div></div>
 
-<!-- LUCK BY CHANCE -->
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/6/6b/Luck_by_Chance_poster.jpg')"
-onclick="openModal(
-'Luck by Chance',
-'https://upload.wikimedia.org/wikipedia/en/6/6b/Luck_by_Chance_poster.jpg',
-'https://i.ytimg.com/vi/0qZ5pG6zZio/hqdefault.jpg',
-'https://www.youtube.com/watch?v=0qZ5pG6zZio',
-'28 Feb 2026'
-)">
-<div class="title">Luck by Chance</div>
-</div>
+<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/6/6b/Luck_by_Chance_poster.jpg')" onclick="openM('Luck by Chance','https://upload.wikimedia.org/wikipedia/en/6/6b/Luck_by_Chance_poster.jpg','0qZ5pG6zZio','28 Feb 2026')"><div class="title">Luck by Chance</div></div>
+
+<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/8/8f/Delhi_Belly_poster.jpg')" onclick="openM('Delhi Belly','https://upload.wikimedia.org/wikipedia/en/8/8f/Delhi_Belly_poster.jpg','7S5G1ZJXc0M','27 Mar 2026')"><div class="title">Delhi Belly</div></div>
+
+<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/0/0f/Bombay_Talkies_poster.jpg')" onclick="openM('Bombay Talkies','https://upload.wikimedia.org/wikipedia/en/0/0f/Bombay_Talkies_poster.jpg','8FZ8gUqjQyE','28 Mar 2026')"><div class="title">Bombay Talkies</div></div>
+
+<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/4/4f/I_Want_to_Eat_Your_Pancreas_poster.jpg')" onclick="openM('I Want to Eat Your Pancreas','https://upload.wikimedia.org/wikipedia/en/4/4f/I_Want_to_Eat_Your_Pancreas_poster.jpg','MmoBvmJA9XI','29 Mar 2026')"><div class="title">I Want to Eat Your Pancreas</div></div>
 
 <!-- MONEY HEIST -->
-<div class="card" style="background-image:url('https://image.tmdb.org/t/p/original/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg')"
-onclick="openModal(
-'Money Heist',
-'https://image.tmdb.org/t/p/original/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg',
-'https://i.ytimg.com/vi/_InqQJRqGW4/hqdefault.jpg',
-'https://www.youtube.com/watch?v=_InqQJRqGW4',
-`S3 EP1 – 1 Mar
+<div class="card" style="background-image:url('https://image.tmdb.org/t/p/original/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg')" onclick="openM('Money Heist','https://image.tmdb.org/t/p/original/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg','_InqQJRqGW4',`S3 EP1 – 1 Mar
 S3 EP2 – 2 Mar
 S3 EP3 – 3 Mar
 S3 EP4 – 4 Mar
@@ -248,65 +125,44 @@ S5 EP6 – 22 Mar
 S5 EP7 – 23 Mar
 S5 EP8 – 24 Mar
 S5 EP9 – 25 Mar
-S5 EP10 – 26 Mar`
-)">
-<div class="title">Money Heist</div>
-</div>
+S5 EP10 – 26 Mar`)"><div class="title">Money Heist</div></div>
 
 <!-- WEDNESDAY -->
-<div class="card" style="background-image:url('https://image.tmdb.org/t/p/original/9PFonBhy4cQy7Jz20NpMygczOkv.jpg')"
-onclick="openModal(
-'Wednesday – Season 2',
-'https://image.tmdb.org/t/p/original/9PFonBhy4cQy7Jz20NpMygczOkv.jpg',
-'https://i.ytimg.com/vi/Q73UhUTs6y0/hqdefault.jpg',
-'https://www.youtube.com/watch?v=Q73UhUTs6y0',
-`EP1 – 30 Mar
+<div class="card" style="background-image:url('https://image.tmdb.org/t/p/original/9PFonBhy4cQy7Jz20NpMygczOkv.jpg')" onclick="openM('Wednesday S2','https://image.tmdb.org/t/p/original/9PFonBhy4cQy7Jz20NpMygczOkv.jpg','Q73UhUTs6y0',`EP1 – 30 Mar
 EP2 – 31 Mar
 EP3 – 1 Apr
 EP4 – 2 Apr
 EP5 – 3 Apr
 EP6 – 4 Apr
 EP7 – 5 Apr
-EP8 – 6 Apr`
-)">
-<div class="title">Wednesday S2</div>
-</div>
+EP8 – 6 Apr`)"><div class="title">Wednesday S2</div></div>
 
 </div>
 
-<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-box">
-    <div class="close" onclick="closeModal()">✕</div>
-
+    <div class="close" onclick="modal.style.display='none'">✕</div>
     <div class="modal-header">
-      <img reminder="" class="modal-poster" id="mPoster">
+      <img class="modal-poster" id="p">
       <div class="modal-info">
-        <h2 id="mTitle"></h2>
-        <p>Schedule & Trailer</p>
-
-        <div class="trailer" id="mTrailer">
-          <img id="mThumb">
-          <div class="yt">▶</div>
-        </div>
+        <h2 id="t"></h2>
+        <div class="trailer" id="tr"><img id="th"><div class="yt">▶</div></div>
         <div class="trailer-text">Watch Trailer</div>
       </div>
     </div>
-
-    <div class="episodes" id="mText"></div>
+    <div class="episodes" id="e"></div>
   </div>
 </div>
 
 <script>
-function openModal(title,poster,thumb,link,text){
-  mTitle.innerText=title;
-  mPoster.src=poster;
-  mThumb.src=thumb;
-  mTrailer.onclick=()=>window.open(link,'_blank');
-  mText.innerText=text;
+function openM(title,poster,vid,text){
+  t.innerText=title;
+  p.src=poster;
+  th.src=`https://i.ytimg.com/vi/${vid}/hqdefault.jpg`;
+  tr.onclick=()=>window.open(`https://www.youtube.com/watch?v=${vid}`,'_blank');
+  e.innerText=text;
   modal.style.display='flex';
 }
-function closeModal(){modal.style.display='none';}
 </script>
 
 </body>
