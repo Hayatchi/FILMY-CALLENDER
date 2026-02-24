@@ -9,9 +9,10 @@
 :root{
   --red:#e50914;
   --bg:#141414;
+  --card:#1f1f1f;
 }
-
 *{box-sizing:border-box}
+
 body{
   margin:0;
   background:var(--bg);
@@ -24,8 +25,8 @@ body{
   padding:18px 32px;
   position:sticky;
   top:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(20,20,20,.8));
   z-index:10;
+  background:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(20,20,20,.8));
 }
 .logo{
   font-size:30px;
@@ -54,8 +55,7 @@ body{
   transition:.35s;
 }
 .card:hover{
-  transform:scale(1.08);
-  z-index:2;
+  transform:scale(1.07);
   box-shadow:0 30px 60px rgba(0,0,0,.8);
 }
 .card::before{
@@ -66,7 +66,6 @@ body{
 @media(max-width:768px){
   .card::before{padding-top:177%;}
 }
-
 .title{
   position:absolute;
   bottom:0;
@@ -89,7 +88,7 @@ body{
 .modal-box{
   background:#181818;
   width:92%;
-  max-width:700px;
+  max-width:720px;
   border-radius:18px;
   padding:22px;
   animation:pop .3s ease;
@@ -106,30 +105,31 @@ body{
   cursor:pointer;
 }
 
+/* MODAL CONTENT */
 .modal-header{
   display:flex;
-  gap:18px;
+  gap:16px;
 }
 .modal-poster{
-  width:140px;
+  width:130px;
   border-radius:12px;
 }
 .modal-info h2{margin:0}
 .modal-info p{
   color:#b3b3b3;
   font-size:14px;
-  line-height:1.6;
 }
 
-/* TRAILER */
+/* TRAILER (SMALL) */
 .trailer{
-  margin-top:16px;
+  margin-top:14px;
+  max-width:320px;
   position:relative;
   cursor:pointer;
 }
 .trailer img{
   width:100%;
-  border-radius:12px;
+  border-radius:10px;
 }
 .yt{
   position:absolute;
@@ -137,14 +137,20 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:60px;
+  font-size:42px;
   color:#ff0000;
   background:rgba(0,0,0,.25);
-  border-radius:12px;
+  border-radius:10px;
+}
+.trailer-text{
+  margin-top:6px;
+  font-size:13px;
+  color:#b3b3b3;
 }
 
+/* EPISODES */
 .episodes{
-  margin-top:16px;
+  margin-top:14px;
   font-size:14px;
   color:#b3b3b3;
   line-height:1.7;
@@ -160,50 +166,60 @@ body{
 
 <div class="grid">
 
+<!-- O ROMEO -->
 <div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/7/7f/O_Romeo_film_poster.jpg')"
 onclick="openModal(
 'O Romeo',
-'https://i.ytimg.com/vi/6Z6x7yX5zZ0/maxresdefault.jpg',
+'https://upload.wikimedia.org/wikipedia/en/7/7f/O_Romeo_film_poster.jpg',
+'https://i.ytimg.com/vi/6Z6x7yX5zZ0/hqdefault.jpg',
 'https://www.youtube.com/results?search_query=o+romeo+official+trailer',
 '25 Feb 2026 (Theatre)'
 )">
 <div class="title">O Romeo</div>
 </div>
 
+<!-- DRISHYAM 2 -->
 <div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/9/9e/Drishyam_2_2022_film_poster.jpg')"
 onclick="openModal(
 'Drishyam 2',
-'https://i.ytimg.com/vi/c9M7Y5sZrA4/maxresdefault.jpg',
+'https://upload.wikimedia.org/wikipedia/en/9/9e/Drishyam_2_2022_film_poster.jpg',
+'https://i.ytimg.com/vi/c9M7Y5sZrA4/hqdefault.jpg',
 'https://www.youtube.com/watch?v=c9M7Y5sZrA4',
 '26 Feb 2026'
 )">
 <div class="title">Drishyam 2</div>
 </div>
 
+<!-- YOUR NAME -->
 <div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png')"
 onclick="openModal(
 'Your Name',
-'https://i.ytimg.com/vi/xU47nhruN-Q/maxresdefault.jpg',
+'https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png',
+'https://i.ytimg.com/vi/xU47nhruN-Q/hqdefault.jpg',
 'https://www.youtube.com/watch?v=xU47nhruN-Q',
 '27 Feb 2026'
 )">
 <div class="title">Your Name</div>
 </div>
 
+<!-- LUCK BY CHANCE -->
 <div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/6/6b/Luck_by_Chance_poster.jpg')"
 onclick="openModal(
 'Luck by Chance',
-'https://i.ytimg.com/vi/0qZ5pG6zZio/maxresdefault.jpg',
+'https://upload.wikimedia.org/wikipedia/en/6/6b/Luck_by_Chance_poster.jpg',
+'https://i.ytimg.com/vi/0qZ5pG6zZio/hqdefault.jpg',
 'https://www.youtube.com/watch?v=0qZ5pG6zZio',
 '28 Feb 2026'
 )">
 <div class="title">Luck by Chance</div>
 </div>
 
+<!-- MONEY HEIST -->
 <div class="card" style="background-image:url('https://image.tmdb.org/t/p/original/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg')"
 onclick="openModal(
 'Money Heist',
-'https://i.ytimg.com/vi/_InqQJRqGW4/maxresdefault.jpg',
+'https://image.tmdb.org/t/p/original/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg',
+'https://i.ytimg.com/vi/_InqQJRqGW4/hqdefault.jpg',
 'https://www.youtube.com/watch?v=_InqQJRqGW4',
 `S3 EP1 – 1 Mar
 S3 EP2 – 2 Mar
@@ -237,22 +253,44 @@ S5 EP10 – 26 Mar`
 <div class="title">Money Heist</div>
 </div>
 
+<!-- WEDNESDAY -->
+<div class="card" style="background-image:url('https://image.tmdb.org/t/p/original/9PFonBhy4cQy7Jz20NpMygczOkv.jpg')"
+onclick="openModal(
+'Wednesday – Season 2',
+'https://image.tmdb.org/t/p/original/9PFonBhy4cQy7Jz20NpMygczOkv.jpg',
+'https://i.ytimg.com/vi/Q73UhUTs6y0/hqdefault.jpg',
+'https://www.youtube.com/watch?v=Q73UhUTs6y0',
+`EP1 – 30 Mar
+EP2 – 31 Mar
+EP3 – 1 Apr
+EP4 – 2 Apr
+EP5 – 3 Apr
+EP6 – 4 Apr
+EP7 – 5 Apr
+EP8 – 6 Apr`
+)">
+<div class="title">Wednesday S2</div>
 </div>
 
+</div>
+
+<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-box">
     <div class="close" onclick="closeModal()">✕</div>
+
     <div class="modal-header">
-      <img class="modal-poster" id="mPoster">
+      <img reminder="" class="modal-poster" id="mPoster">
       <div class="modal-info">
         <h2 id="mTitle"></h2>
-        <p>Schedule</p>
-      </div>
-    </div>
+        <p>Schedule & Trailer</p>
 
-    <div class="trailer" id="mTrailer" target="_blank">
-      <img id="mThumb">
-      <div class="yt">▶</div>
+        <div class="trailer" id="mTrailer">
+          <img id="mThumb">
+          <div class="yt">▶</div>
+        </div>
+        <div class="trailer-text">Watch Trailer</div>
+      </div>
     </div>
 
     <div class="episodes" id="mText"></div>
@@ -260,17 +298,15 @@ S5 EP10 – 26 Mar`
 </div>
 
 <script>
-function openModal(title,thumb,link,text){
-  document.getElementById('mTitle').innerText=title;
-  document.getElementById('mPoster').src=thumb;
-  document.getElementById('mThumb').src=thumb;
-  document.getElementById('mTrailer').onclick=()=>window.open(link,'_blank');
-  document.getElementById('mText').innerText=text;
-  document.getElementById('modal').style.display='flex';
+function openModal(title,poster,thumb,link,text){
+  mTitle.innerText=title;
+  mPoster.src=poster;
+  mThumb.src=thumb;
+  mTrailer.onclick=()=>window.open(link,'_blank');
+  mText.innerText=text;
+  modal.style.display='flex';
 }
-function closeModal(){
-  document.getElementById('modal').style.display='none';
-}
+function closeModal(){modal.style.display='none';}
 </script>
 
 </body>
