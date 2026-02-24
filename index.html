@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WATCHNEXT</title>
 
 <style>
@@ -49,8 +49,10 @@ body{
   border-radius:18px;
   overflow:hidden;
   cursor:pointer;
-  background-size:cover;
+  background-color:#141414;
+  background-repeat:no-repeat;
   background-position:center;
+  background-size:cover;
   transition:.3s;
 }
 .card:hover{
@@ -85,7 +87,7 @@ body{
   z-index:50;
 }
 .modal-box{
-  background-color:#141414;
+  background:#181818;
   width:92%;
   max-width:760px;
   max-height:85vh;
@@ -170,7 +172,6 @@ body{
 
 <div class="grid">
 
-<!-- MOVIES -->
 <div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/O_Romeo_film_poster.webp/800px-O_Romeo_film_poster.webp')" onclick="openModal('O’Romeo','https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/O_Romeo_film_poster.webp/800px-O_Romeo_film_poster.webp','2M4hKmuBzUU','25 Feb 2026 (Theatre)')"><div class="card-title">O’Romeo</div></div>
 
 <div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Drishyam_2_2022_film_poster.webp/800px-Drishyam_2_2022_film_poster.webp')" onclick="openModal('Drishyam 2','https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Drishyam_2_2022_film_poster.webp/800px-Drishyam_2_2022_film_poster.webp','cxA2y9Tgl7o','26 Feb 2026')"><div class="card-title">Drishyam 2</div></div>
@@ -191,7 +192,6 @@ body{
 
 </div>
 
-<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-box">
     <div class="close" onclick="closeModal()">✕</div>
@@ -246,7 +246,7 @@ S5 EP10 – 26 Mar`;
 
 const wednesday = `EP1 – 30 Mar
 EP2 – 31 Mar
-EP3 – 1 Aprpr
+EP3 – 1 Apr
 EP4 – 2 Apr
 EP5 – 3 Apr
 EP6 – 4 Apr
