@@ -6,219 +6,97 @@
 <title>WATCHNEXT</title>
 
 <style>
-:root{
-  --bg:#141414;
-  --red:#e50914;
-  --muted:#b3b3b3;
-}
-*{box-sizing:border-box}
 body{
   margin:0;
-  background:var(--bg);
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
+  background:#141414;
+  color:white;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
-/* NAV */
-.nav{
-  padding:18px 32px;
-  background:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(20,20,20,.8));
-}
-.logo{
-  color:var(--red);
-  font-size:30px;
-  font-weight:900;
-  letter-spacing:3px;
-  transform:rotate(-2deg);
-}
-
-/* GRID */
-.grid{
-  padding:30px;
-  display:grid;
-  gap:20px;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-}
-
-/* CARD — FIXED */
-.card{
-  position:relative;
-  border-radius:18px;
-  overflow:hidden;
-  cursor:pointer;
-
-  background-color:#141414;
-  background-repeat:no-repeat;
-  background-position:center;
-  background-size:cover;
-
-  aspect-ratio:16 / 9;   /* desktop */
-  transition:.3s;
-}
-@media(max-width:768px){
-  .card{ aspect-ratio:9 / 16; }  /* mobile */
-}
-
-.card:hover{
-  transform:scale(1.06);
-  box-shadow:0 25px 50px rgba(0,0,0,.7);
-}
-
-.card-title{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  padding:14px;
-  font-weight:bold;
-  background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
-}
-
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  display:none;
-  align-items:center;
-  justify-content:center;
-}
-.modal-box{
-  background:#181818;
-  width:92%;
-  max-width:760px;
-  max-height:85vh;
-  border-radius:18px;
+h1{
+  color:#e50914;
   padding:20px;
-}
-.close{
-  position:absolute;
-  top:18px;
-  right:22px;
-  font-size:26px;
-  cursor:pointer;
-}
-
-.modal-top{
-  display:flex;
-  gap:16px;
-}
-.modal-poster{
-  width:140px;
-  border-radius:12px;
-}
-
-.modal-info p{
-  color:var(--muted);
   margin:0;
 }
 
-.trailer{
-  margin-top:10px;
-  width:260px;
-  position:relative;
-  cursor:pointer;
-}
-.trailer img{
-  width:100%;
-  border-radius:10px;
-}
-.play{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  color:#ff0000;
-  background:rgba(0,0,0,.3);
-}
-.trailer-text{
-  font-size:13px;
-  color:var(--muted);
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:20px;
+  padding:20px;
 }
 
-.episodes{
-  margin-top:14px;
-  padding-top:10px;
-  border-top:1px solid rgba(255,255,255,.1);
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.7;
-  max-height:30vh;
-  overflow-y:auto;
+.card{
+  background:#000;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.card img{
+  width:100%;
+  display:block;
+}
+
+.title{
+  padding:10px;
+  font-weight:bold;
+  text-align:center;
 }
 </style>
 </head>
 
 <body>
 
-<div class="nav"><div class="logo">WATCHNEXT</div></div>
+<h1>WATCHNEXT</h1>
 
 <div class="grid">
 
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/O_Romeo_film_poster.webp/800px-O_Romeo_film_poster.webp')" onclick="openModal('O’Romeo','https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/O_Romeo_film_poster.webp/800px-O_Romeo_film_poster.webp','2M4hKmuBzUU','25 Feb 2026 (Theatre)')"><div class="card-title">O’Romeo</div></div>
-
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Drishyam_2_2022_film_poster.webp/800px-Drishyam_2_2022_film_poster.webp')" onclick="openModal('Drishyam 2','https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Drishyam_2_2022_film_poster.webp/800px-Drishyam_2_2022_film_poster.webp','cxA2y9Tgl7o','26 Feb 2026')"><div class="card-title">Drishyam 2</div></div>
-
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Luck_By_Chance_Poster.webp/800px-Luck_By_Chance_Poster.webp')" onclick="openModal('Luck by Chance','https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Luck_By_Chance_Poster.webp/800px-Luck_By_Chance_Poster.webp','vqMD0JUECAc','28 Feb 2026')"><div class="card-title">Luck by Chance</div></div>
-
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Delhi_Belly_Poster.webp/800px-Delhi_Belly_Poster.webp')" onclick="openModal('Delhi Belly','https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Delhi_Belly_Poster.webp/800px-Delhi_Belly_Poster.webp','YyYq4rrvjdQ','27 Mar 2026')"><div class="card-title">Delhi Belly</div></div>
-
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/1/1e/Bombay_Talkies_Poster.webp/800px-Bombay_Talkies_Poster.webp')" onclick="openModal('Bombay Talkies','https://upload.wikimedia.org/wikipedia/en/thumb/1/1e/Bombay_Talkies_Poster.webp/800px-Bombay_Talkies_Poster.webp','IoZubefSNP0','28 Mar 2026')"><div class="card-title">Bombay Talkies</div></div>
-
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/I_Want_to_Eat_Your_Pancreas_anime_poster.webp/800px-I_Want_to_Eat_Your_Pancreas_anime_poster.webp')" onclick="openModal('I Want to Eat Your Pancreas','https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/I_Want_to_Eat_Your_Pancreas_anime_poster.webp/800px-I_Want_to_Eat_Your_Pancreas_anime_poster.webp','7q8pa1wqI9Y','29 Mar 2026')"><div class="card-title">I Want to Eat Your Pancreas</div></div>
-
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Your_Name_poster.webp/800px-Your_Name_poster.webp')" onclick="openModal('Your Name','https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Your_Name_poster.webp/800px-Your_Name_poster.webp','xU47nhruN-Q','27 Feb 2026')"><div class="card-title">Your Name</div></div>
-
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/3/3e/Money_Heist_poster.webp/800px-Money_Heist_poster.webp')" onclick="openModal('Money Heist','https://upload.wikimedia.org/wikipedia/en/thumb/3/3e/Money_Heist_poster.webp/800px-Money_Heist_poster.webp','_InqQJRqGW4',moneyHeist)"><div class="card-title">Money Heist</div></div>
-
-<div class="card" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Wednesday_season_2_poster.webp/800px-Wednesday_season_2_poster.webp')" onclick="openModal('Wednesday S2','https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Wednesday_season_2_poster.webp/800px-Wednesday_season_2_poster.webp','03u4xyj0TH4',wednesday)"><div class="card-title">Wednesday S2</div></div>
-
+<div class="card">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/O_Romeo_film_poster.webp/800px-O_Romeo_film_poster.webp">
+  <div class="title">O’Romeo</div>
 </div>
 
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <div class="close" onclick="modal.style.display='none'">✕</div>
-    <div class="modal-top">
-      <img class="modal-poster" id="poster">
-      <div>
-        <h2 id="title"></h2>
-        <p id="date"></p>
-        <div class="trailer" id="trailer">
-          <img id="thumb"><div class="play">▶</div>
-        </div>
-        <div class="trailer-text">Watch Trailer</div>
-      </div>
-    </div>
-    <div class="episodes" id="episodes"></div>
-  </div>
+<div class="card">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Drishyam_2_2022_film_poster.webp/800px-Drishyam_2_2022_film_poster.webp">
+  <div class="title">Drishyam 2</div>
 </div>
 
-<script>
-const moneyHeist = `S3 EP1 – 1 Mar
-S3 EP2 – 2 Mar
-S3 EP3 – 3 Mar
-S3 EP4 – 4 Mar
-S3 EP5 – 5 Mar
-S3 EP6 – 6 Mar
-S3 EP7 – 7 Mar
-S3 EP8 – 8 Mar`;
+<div class="card">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Luck_By_Chance_Poster.webp/800px-Luck_By_Chance_Poster.webp">
+  <div class="title">Luck by Chance</div>
+</div>
 
-const wednesday = `EP1 – 30 Mar
-EP2 – 31 Mar
-EP3 – 1 Apr
-EP4 – 2 Apr`;
+<div class="card">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Delhi_Belly_Poster.webp/800px-Delhi_Belly_Poster.webp">
+  <div class="title">Delhi Belly</div>
+</div>
 
-function openModal(name,posterUrl,vid,info){
-  title.innerText=name;
-  poster.src=posterUrl;
-  thumb.src=`https://i.ytimg.com/vi/${vid}/hqdefault.jpg`;
-  trailer.onclick=()=>window.open(`https://www.youtube.com/watch?v=${vid}`);
-  date.innerText=info.includes('EP')?'Episode Schedule':info;
-  episodes.innerText=info.includes('EP')?info:'';
-  modal.style.display='flex';
-}
-</script>
+<div class="card">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1e/Bombay_Talkies_Poster.webp/800px-Bombay_Talkies_Poster.webp">
+  <div class="title">Bombay Talkies</div>
+</div>
+
+<div class="card">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/I_Want_to_Eat_Your_Pancreas_anime_poster.webp/800px-I_Want_to_Eat_Your_Pancreas_anime_poster.webp">
+  <div class="title">I Want to Eat Your Pancreas</div>
+</div>
+
+<div class="card">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Your_Name_poster.webp/800px-Your_Name_poster.webp">
+  <div class="title">Your Name</div>
+</div>
+
+<div class="card">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3e/Money_Heist_poster.webp/800px-Money_Heist_poster.webp">
+  <div class="title">Money Heist</div>
+</div>
+
+<div class="card">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Wednesday_season_2_poster.webp/800px-Wednesday_season_2_poster.webp">
+  <div class="title">Wednesday S2</div>
+</div>
+
+</div>
 
 </body>
 </html>
