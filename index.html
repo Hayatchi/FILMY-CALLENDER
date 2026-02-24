@@ -22,9 +22,6 @@ body{
 /* NAV */
 .nav{
   padding:18px 32px;
-  position:sticky;
-  top:0;
-  z-index:10;
   background:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(20,20,20,.8));
 }
 .logo{
@@ -43,30 +40,30 @@ body{
   grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
 }
 
-/* CARD */
+/* CARD — FIXED */
 .card{
   position:relative;
   border-radius:18px;
   overflow:hidden;
   cursor:pointer;
+
   background-color:#141414;
   background-repeat:no-repeat;
   background-position:center;
   background-size:cover;
+
+  aspect-ratio:16 / 9;   /* desktop */
   transition:.3s;
 }
+@media(max-width:768px){
+  .card{ aspect-ratio:9 / 16; }  /* mobile */
+}
+
 .card:hover{
   transform:scale(1.06);
   box-shadow:0 25px 50px rgba(0,0,0,.7);
 }
-.card::before{
-  content:"";
-  display:block;
-  padding-top:56.25%;
-}
-@media(max-width:768px){
-  .card::before{padding-top:177%;}
-}
+
 .card-title{
   position:absolute;
   bottom:0;
@@ -84,7 +81,6 @@ body{
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:50;
 }
 .modal-box{
   background:#181818;
@@ -93,8 +89,6 @@ body{
   max-height:85vh;
   border-radius:18px;
   padding:20px;
-  display:flex;
-  flex-direction:column;
 }
 .close{
   position:absolute;
@@ -104,7 +98,6 @@ body{
   cursor:pointer;
 }
 
-/* MODAL CONTENT */
 .modal-top{
   display:flex;
   gap:16px;
@@ -112,18 +105,13 @@ body{
 .modal-poster{
   width:140px;
   border-radius:12px;
-  flex-shrink:0;
-}
-.modal-info h2{
-  margin:0 0 6px;
-}
-.modal-info p{
-  margin:0;
-  color:var(--muted);
-  font-size:14px;
 }
 
-/* TRAILER */
+.modal-info p{
+  color:var(--muted);
+  margin:0;
+}
+
 .trailer{
   margin-top:10px;
   width:260px;
@@ -147,10 +135,8 @@ body{
 .trailer-text{
   font-size:13px;
   color:var(--muted);
-  margin-top:4px;
 }
 
-/* EPISODES */
 .episodes{
   margin-top:14px;
   padding-top:10px;
@@ -158,17 +144,15 @@ body{
   color:var(--muted);
   font-size:14px;
   line-height:1.7;
-  overflow-y:auto;
   max-height:30vh;
+  overflow-y:auto;
 }
 </style>
 </head>
 
 <body>
 
-<div class="nav">
-  <div class="logo">WATCHNEXT</div>
-</div>
+<div class="nav"><div class="logo">WATCHNEXT</div></div>
 
 <div class="grid">
 
@@ -194,22 +178,18 @@ body{
 
 <div class="modal" id="modal">
   <div class="modal-box">
-    <div class="close" onclick="closeModal()">✕</div>
-
+    <div class="close" onclick="modal.style.display='none'">✕</div>
     <div class="modal-top">
       <img class="modal-poster" id="poster">
-      <div class="modal-info">
+      <div>
         <h2 id="title"></h2>
         <p id="date"></p>
-
         <div class="trailer" id="trailer">
-          <img id="thumb">
-          <div class="play">▶</div>
+          <img id="thumb"><div class="play">▶</div>
         </div>
         <div class="trailer-text">Watch Trailer</div>
       </div>
     </div>
-
     <div class="episodes" id="episodes"></div>
   </div>
 </div>
@@ -222,48 +202,21 @@ S3 EP4 – 4 Mar
 S3 EP5 – 5 Mar
 S3 EP6 – 6 Mar
 S3 EP7 – 7 Mar
-S3 EP8 – 8 Mar
-
-S4 EP1 – 9 Mar
-S4 EP2 – 10 Mar
-S4 EP3 – 11 Mar
-S4 EP4 – 12 Mar
-S4 EP5 – 13 Mar
-S4 EP6 – 14 Mar
-S4 EP7 – 15 Mar
-S4 EP8 – 16 Mar
-
-S5 EP1 – 17 Mar
-S5 EP2 – 18 Mar
-S5 EP3 – 19 Mar
-S5 EP4 – 20 Mar
-S5 EP5 – 21 Mar
-S5 EP6 – 22 Mar
-S5 EP7 – 23 Mar
-S5 EP8 – 24 Mar
-S5 EP9 – 25 Mar
-S5 EP10 – 26 Mar`;
+S3 EP8 – 8 Mar`;
 
 const wednesday = `EP1 – 30 Mar
 EP2 – 31 Mar
 EP3 – 1 Apr
-EP4 – 2 Apr
-EP5 – 3 Apr
-EP6 – 4 Apr
-EP7 – 5 Apr
-EP8 – 6 Apr`;
+EP4 – 2 Apr`;
 
-function openModal(name, posterUrl, videoId, info){
-  title.innerText = name;
-  poster.src = posterUrl;
-  thumb.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-  trailer.onclick = () => window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-  date.innerText = info.includes('EP') ? 'Episode Schedule' : info;
-  episodes.innerText = info.includes('EP') ? info : '';
-  modal.style.display = 'flex';
-}
-function closeModal(){
-  modal.style.display = 'none';
+function openModal(name,posterUrl,vid,info){
+  title.innerText=name;
+  poster.src=posterUrl;
+  thumb.src=`https://i.ytimg.com/vi/${vid}/hqdefault.jpg`;
+  trailer.onclick=()=>window.open(`https://www.youtube.com/watch?v=${vid}`);
+  date.innerText=info.includes('EP')?'Episode Schedule':info;
+  episodes.innerText=info.includes('EP')?info:'';
+  modal.style.display='flex';
 }
 </script>
 
